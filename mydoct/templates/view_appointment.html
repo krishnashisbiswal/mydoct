@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}View Appointment{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Appointment Details</h2>
+    </div>
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <strong>Patient:</strong> {{ appointment.patient.name }}
+            </div>
+            <div class="col-md-6">
+                <strong>Date:</strong> {{ appointment.date }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <strong>Time:</strong> {{ appointment.time }}
+            </div>
+            <div class="col-md-6">
+                <strong>Status:</strong> {{ appointment.get_status_display }}
+            </div>
+        </div>
+        <div class="mb-3">
+            <strong>Notes:</strong>
+            <p>{{ appointment.notes }}</p>
+        </div>
+        <a href="{% url 'manage_appointments' %}" class="btn btn-secondary">Back to Appointments</a>
+    </div>
+</div>
+{% endblock %}
