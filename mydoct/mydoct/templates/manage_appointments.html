@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Appointments{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Manage Appointments</h2>
+        <a href="{% url 'add_appointment' %}" class="btn btn-primary">
+            Add New Appointment
+        </a>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.patient.name }}</td>
+                    <td>{{ appointment.doctor.name }}</td>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.time }}</td>
+                    <td>{{ appointment.get_status_display }}</td>
+                    <td>{{ appointment.notes|truncatechars:30 }}</td>
+<td>
+    <a href="{% url 'view_appointment' appointment.id %}" class="btn btn-sm btn-info">View</a>
+    <a href="{% url 'edit_appointment' appointment.id %}" class="btn btn-sm btn-warning">Edit</a>
+    <a href="{% url 'delete_appointment' appointment.id %}" class="btn btn-sm btn-danger">Delete</a>
+</td>
+
+
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center">No appointments found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
