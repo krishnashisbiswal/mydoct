@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
-{% block title %}Add Staff{% endblock %}
+{% block title %}Edit Staff{% endblock %}
 
 {% block content %}
 <div class="card">
     <div class="card-header">
-        <h2>Add New Staff Member</h2>
+        <h2>Edit Staff Member</h2>
     </div>
     <div class="card-body">
         {% if error %}
@@ -13,35 +13,29 @@
             {{ error }}
         </div>
         {% endif %}
-        <form method="post">
+        <form method="POST">
             {% csrf_token %}
-
             <div class="mb-3">
                 <label for="role" class="form-label">Role</label>
                 <select class="form-select" id="role" name="role" required>
-                    <option value="staff">Staff</option>
-                    <option value="doctor">Doctor</option>
+                    <option value="staff" {% if staff_member.specialization == '' %}selected{% endif %}>Staff</option>
+                    <option value="doctor" {% if staff_member.specialization != '' %}selected{% endif %}>Doctor</option>
                 </select>
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
+                <input type="text" class="form-control" id="name" name="name" value="{{ staff_member.name }}" required>
             </div>
-
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
+                <input type="email" class="form-control" id="email" name="email" value="{{ staff_member.email }}" required>
             </div>
             <div class="mb-3">
                 <label for="specialization" class="form-label">Specialization</label>
-                <input type="text" class="form-control" id="specialization" name="specialization">
+                <textarea class="form-control" id="specialization" name="specialization" rows="3">{{ staff_member.specialization }}</textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Create Staff</button>
-            <a href="{% url 'dashboard' %}" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+            <a href="{% url 'list_staff' %}" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 </div>
