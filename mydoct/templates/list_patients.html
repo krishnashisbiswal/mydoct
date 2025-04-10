@@ -10,7 +10,6 @@
     </div>
     <div class="card-body">
     <table class="table table-striped">
-
     <thead>
         <tr>
             <th>Name</th>
@@ -20,7 +19,6 @@
             <th>Phone Number</th>
             <th>Medical History</th>
             <th>Actions</th>
-
         </tr>
     </thead>
     <tbody>
@@ -41,7 +39,13 @@
                 </form>
             </td>
         </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7" class="text-center">No Patient Yet</td>
+        </tr>
         {% endfor %}
     </tbody>
-</table>
+    </table>
+    </div>
+</div>
 {% endblock %}

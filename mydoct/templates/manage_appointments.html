@@ -21,9 +21,7 @@
                     <th>Status</th>
                     <th>Notes</th>
                     <th>Actions</th>
-
                 </tr>
-
             </thead>
             <tbody>
                 {% for appointment in appointments %}
@@ -34,19 +32,17 @@
                     <td>{{ appointment.time }}</td>
                     <td>{{ appointment.get_status_display }}</td>
                     <td>{{ appointment.notes|truncatechars:30 }}</td>
-<td>
-    <a href="{% url 'view_appointment' appointment.id %}" class="btn btn-sm btn-info">View</a>
-    <a href="{% url 'edit_appointment' appointment.id %}" class="btn btn-sm btn-warning">Edit</a>
-    <a href="{% url 'delete_appointment' appointment.id %}" class="btn btn-sm btn-danger">Delete</a>
-</td>
-
-
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="5" class="text-center">No appointments found</td>
-                </tr>
-                {% endfor %}
+                    <td>
+                        <a href="{% url 'view_appointment' appointment.id %}" class="btn btn-sm btn-success">View</a>
+                        <a href="{% url 'edit_appointment' appointment.id %}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="{% url 'delete_appointment' appointment.id %}" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center">No appointments found</td>
+                    </tr>
+                    {% endfor %}
             </tbody>
         </table>
     </div>

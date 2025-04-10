@@ -1,11 +1,19 @@
 /* Custom CSS styles for MyDoct application */
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Roboto', sans-serif; /* Updated font */
+    background: linear-gradient(135deg, #e0eafc, #cfdef3); /* Gradient background */
+    padding-bottom: 100px; /* Space for the footer */
 }
 
 .navbar {
     margin-bottom: 20px;
+    background: linear-gradient(135deg, #91c8ff, #63aaf1, #4d9eff); /* Gradient background */
+    background: linear-gradient(90deg, #b02c05f2, #d4d05ef2,#067ed3, #e200b5, #3f1646f2,); /* Gradient text color */
+    background-clip: text; /* Text gradient */
+    -webkit-background-clip: text; /* Safari support */
+    color: white; /* White text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
 }
 
 .container {
@@ -13,7 +21,28 @@ body {
 }
 
 .card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    border-radius: 10px; /* Rounded corners */
+    transition: transform 0.2s; /* Smooth transition */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+/* Button Styles */
+button {
+    background-color: #007bff; /* Primary button color */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
 }
 
 /* Table Styles */
@@ -36,5 +65,17 @@ body {
 }
 
 .table-hover tbody tr:hover {
-    background-color: rgba(0, 0, 0, 0.075);
+    background-color: rgba(0, 123, 255, 0.1); /* Light blue on hover */
+}
+
+/* Footer Styles */
+footer {
+    position: relative; /* Changed from fixed to relative */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #343a40, #495057); /* Gradient background */
+    color: white; /* White text */
+    text-align: center; /* Centered text */
+    padding: 1rem 0; /* Padding for the footer */
 }
